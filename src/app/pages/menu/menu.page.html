@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+
+      <ion-buttons slot="start">
+          <ion-menu-button color="tertiary"
+                            menu="first">
+          </ion-menu-button>
+        </ion-buttons>
+    
+      <ion-title>Pagina Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-menu side="start" menuId="first">
+  
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+
+    <ion-list>
+      <ion-menu-toggle auto-hide="false">
+      <ion-item [routerLink]="['/clients']">
+        <ion-icon slot="start" name="contacts"></ion-icon>
+        <ion-label>
+          Clientes
+        </ion-label>
+      </ion-item>  
+      </ion-menu-toggle>  
+    </ion-list>
+  
+    <ion-list>
+        <ion-menu-toggle auto-hide="false">
+        <ion-item [routerLink]="['/invoices']">
+          <ion-icon slot="start" name="paper"></ion-icon>
+          <ion-label>
+            Invoices
+          </ion-label>
+        </ion-item>  
+        </ion-menu-toggle>  
+      </ion-list>
+  
+
+      <ion-list>
+          <ion-menu-toggle auto-hide="false">
+          <ion-item [routerLink]="['/providers']">
+            <ion-icon slot="start" name="body"></ion-icon>
+            <ion-label>
+              Providers
+            </ion-label>
+          </ion-item>  
+          </ion-menu-toggle>  
+        </ion-list>
+
+        <ion-list>
+        <ion-item (click)="logOut()">
+            <ion-icon slot="start" name="share-alt"></ion-icon>
+            <ion-label>
+              LogOut
+            </ion-label>
+        </ion-item>
+      </ion-list>
+
+  </ion-content>
+
+</ion-menu>
+
+<ion-router-outlet main></ion-router-outlet>
