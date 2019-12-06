@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { Storage } from '@ionic/storage';
 
 
 
@@ -11,13 +12,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./input-login.page.scss'],
 })
 export class InputLoginPage implements OnInit {
-
+  driver: string ='';
   loading;
   logUsers = { username: '', password: '' };
 
 
   constructor(private auth: AuthService, private navCtrl : NavController,
- public router: Router, public loadCrtl: LoadingController) { }
+ public router: Router, public loadCrtl: LoadingController, private storage: Storage) { 
+
+  this.storage.ready().then(
+    () => this.driver =this.storage.driver
+  )
+ 
+}
 
  async login() {
 
@@ -27,7 +34,7 @@ export class InputLoginPage implements OnInit {
    await this.loading.present();
 
 
-    this.auth.login(this.logUsers).subscribe(allowed => {
+   this.auth.login(this.logUsers).subscribe(allowed => {
     if (allowed) {
       this.loading.dismiss();
       this.router.navigate(['/menu']);
